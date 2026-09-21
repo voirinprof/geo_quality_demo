@@ -1,0 +1,31 @@
+name: Qualité et tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: pip install -e ".[dev]"
+
+      - name: Vérifier le formatage (Black)
+        run: black --check .
+
+      - name: Linter (Ruff)
+        run: ruff check .
+
+      - name: Vérifier la documentation (interrogate)
+        run: interrogate
+
+      - name: Exécuter les tests (pytest)
+        run: pytest -v
