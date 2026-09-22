@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "geo-quality-demo"
 version = "0.1.0"
 description = "Démo des outils de qualité de code — GMQ 710"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"
 dependencies = [
     "geopandas==0.14.4",
     "shapely==2.0.4",
